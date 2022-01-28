@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+
 
 void main() {
   
@@ -28,11 +28,11 @@ class _MyAppState extends State<MyApp> {
               actions: <Widget>[
                 IconButton(
                     onPressed: () {
-                      setState(() {
-                        msg = 'You pressed arrow icon';
-                      });
+                      setState( () {
+                        msg = 'You pressed history icon';
+                      } );
                     },
-                    icon: const Icon(Icons.forward)),
+                    icon: const Icon(Icons.history)),
                 IconButton(
                     onPressed: () {
                       setState(() {
@@ -48,7 +48,10 @@ class _MyAppState extends State<MyApp> {
               titleSpacing: 70.0,
               //toolbarOpacity: 0.5,
             ),
-            body: Container(
+            body: Center(
+              child: Stack(fit: StackFit.passthrough, overflow: Overflow.visible,
+            children : <Widget>[ 
+              Container(
               //alignment: Alignment.bottomLeft,
               // width: 200.0,
               // height: 100.0,
@@ -79,9 +82,41 @@ class _MyAppState extends State<MyApp> {
                     ],
                   )
                   ),
+            ),
+            Positioned(  
+                top: 20,  
+                right: 20,  
+                child: Container(  
+                  height: 40,  
+                  width: 200,  
+                  color: Colors.blue,  
+                  child: Center(  
+                    child: Text(  
+                      'Middle Widget',  
+                      style: TextStyle(color: Colors.white, fontSize: 20),  
+                    ),  
+                  ),  
+                ),  
+              ),  
+              Positioned(  
+                top: 20,  
+                left: 20,  
+                child: Container(  
+                  height: 80,  
+                  width: 100,  
+                  color: Colors.pink,  
+                  child: Center(  
+                    child: Text(  
+                      'Last Widget',  
+                      style: TextStyle(color: Colors.white, fontSize: 20),  
+                    ),  
+                  ),  
+                ),  
+              ),  
+           ]
             )
-            )
-            
+        )
+    )
     );
   }
 }
